@@ -3,6 +3,7 @@ package br.com.erudio;
 public class ArrayReverter {
 
 	public Object[] reverseArray(Object arr[], int start, int end) {
+		
 		Object temp;
 
 		while (start < end) {
@@ -15,10 +16,17 @@ public class ArrayReverter {
 		return arr;
 	}
 
+	/*if (start >= end)
+    return arr;
+	temp = arr[start];
+	arr[start] = arr[end];
+	arr[end] = temp;
+	reverseArray(arr, start+1, end-1);*/
+	
 	/*
 	 * Utility that prints out an array on a line
 	 */
-	static void printArray(Object arr[], int size) {
+	/*static void printArray(Object arr[], int size) {
 		for (int i = 0; i < size; i++)
 			System.out.print(arr[i] + " ");
 
@@ -26,7 +34,7 @@ public class ArrayReverter {
 	}
 
 	// Driver code
-	/*public static void main(String args[]) {
+	public static void main(String args[]) {
 
 		Integer arr[] = { 1, 2, 3, 4, 5, 6 };
 		String strArr[] = "Hello World".split("");
