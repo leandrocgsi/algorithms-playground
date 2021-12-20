@@ -2,7 +2,7 @@ package br.com.erudio;
 
 public class ArrayReverter {
 
-	static void reverseArray(Object arr[], int start, int end) {
+	public Object[] reverseArray(Object arr[], int start, int end) {
 		Object temp;
 
 		while (start < end) {
@@ -12,6 +12,7 @@ public class ArrayReverter {
 			start++;
 			end--;
 		}
+		return arr;
 	}
 
 	/*
@@ -25,7 +26,7 @@ public class ArrayReverter {
 	}
 
 	// Driver code
-	public static void main(String args[]) {
+	/*public static void main(String args[]) {
 
 		Integer arr[] = { 1, 2, 3, 4, 5, 6 };
 		String strArr[] = "Hello World".split("");
@@ -41,6 +42,6 @@ public class ArrayReverter {
 		reverseArray(strArr, 0, 10);
 		
 		System.out.print("Reversed array is \n");
-		printArray(strArr, 10);		
-	}
+		printArray(strArr, 11);		
+	}*/
 }

@@ -1,7 +1,8 @@
 package br.com.erudio;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import java.util.Arrays;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,46 +19,50 @@ class ArrayReverterTest {
 	void testReverseArrayOfNumbers() {
 		
 		Integer arr[] = { 1, 2, 3, 4, 5, 6 };
-		String strArr[] = "Hello World".split("");
 		
-		printArray(arr, 6);
-		reverseArray(arr, 0, 5);
+		Integer expected[] = { 6, 5, 4, 3, 2, 1 };
+		
+		var reversed = reverter.reverseArray(arr, 0, 5);
 	
-		System.out.print("Reversed array is \n");
-		printArray(arr, 6);
+		Assertions.assertArrayEquals(
+				expected,
+				Arrays.asList(reversed).toArray(new Integer[0]));
+	}
+	
+	@Test
+	void testReverseArrayOfNumbersByPosition() {
 		
+		Integer arr[] = { 1, 2, 3, 4, 5, 6 };
 		
-		printArray(strArr, 11);
-		reverseArray(strArr, 0, 10);
+		Integer expected[] = { 1, 2, 3, 6, 5, 4 };
 		
-		System.out.print("Reversed array is \n");
-		printArray(strArr, 10);		
+		var reversed = reverter.reverseArray(arr, 3, 5);
+		
+		Assertions.assertArrayEquals(
+				expected,
+				Arrays.asList(reversed).toArray(new Integer[0]));
 	}
 	
 	@Test
 	void testReverseArrayOfStrings() {
-		fail("Not yet implemented");
+		String strArray[] = "Hello World".split("");
 		
-		Integer arr[] = { 1, 2, 3, 4, 5, 6 };
-		String strArr[] = "Hello World".split("");
+		var reversed = reverter.reverseArray(strArray, 0, 10);
 		
-		printArray(arr, 6);
-		reverseArray(arr, 0, 5);
-		
-		System.out.print("Reversed array is \n");
-		printArray(arr, 6);
-		
-		
-		printArray(strArr, 11);
-		reverseArray(strArr, 0, 10);
-		
-		System.out.print("Reversed array is \n");
-		printArray(strArr, 10);		
+		Assertions.assertArrayEquals(
+				"dlroW olleH".split(""),
+				Arrays.asList(reversed).toArray(new String[0]));	
 	}
 
 	@Test
-	void testPrintArray() {
-		fail("Not yet implemented");
+	void testReverseArrayOfStringsByPosition() {
+		
+		String strArray[] = "Hello World".split("");
+		
+		var reversed = reverter.reverseArray(strArray, 6, 10);
+		
+		Assertions.assertArrayEquals(
+				"Hello dlroW".split(""),
+				Arrays.asList(reversed).toArray(new String[0]));	
 	}
-
 }
