@@ -9,4 +9,12 @@
 	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	<java.version>16</java.version>
   </properties>
+  <dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.7.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 </project>
