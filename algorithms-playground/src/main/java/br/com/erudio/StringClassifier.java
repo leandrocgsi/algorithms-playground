@@ -1,13 +1,12 @@
 package br.com.erudio;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-public class CustomHash {
+public class StringClassifier {
 
-	static int getStringHashValue(String word) {
+	public int getStringHashValue(String word) {
 
 		int alphabetSize = 26;
 		int hashValue = 0;
@@ -19,21 +18,14 @@ public class CustomHash {
 		return hashValue;
 	}
 
-	static void categorisationOfstrings(Vector<String> arr) {
+	public Map<Integer, Vector<String>> classifyStrings(Vector<String> arr) {
 
-		// Maps strings with their strings
-		// respective hash values
 		Map<Integer, Vector<String>> mp = new HashMap<>();
-
-		// Scroll through the array of strings
+		
 		for (int i = 0; i < arr.size(); i++) {
 
-			// Find the hash value of the
-			// of the current string
 			int temp = getStringHashValue(arr.get(i));
 
-			// Push the current string in
-			// value vector of temp key
 			if (mp.containsKey(temp)) {
 				mp.get(temp).add(arr.get(i));
 			} else {
@@ -41,24 +33,24 @@ public class CustomHash {
 				mp.get(temp).add(arr.get(i));
 			}
 		}
+		return mp;
+	}
 
-		// Scroll through the map mp
+	public static Map<Integer, Vector<String>> printClassifiedVector(Map<Integer, Vector<String>> mp) {
 		for (Map.Entry<Integer, Vector<String>> entry : mp.entrySet()) {
-
-			// Print the result
 			for (String str : entry.getValue()) {
 				System.out.print(str + " ");
 			}
 			System.out.println();
 		}
+		return mp;
 	}
 
-	// Driver code
-	public static void main(String[] args) {
-		String[] Sarr = { "adf", "aahe", "bce", "bgdb" };
-		Vector<String> arr = new Vector<String>(Arrays.asList(Sarr));
-		int N = arr.size();
-
-		categorisationOfstrings(arr);
-	}
+	/*public static void main(String[] args) {
+		String[] array = { "adf", "aahe", "bce", "bgdb" };
+		Vector<String> vector = new Vector<String>(Arrays.asList(array));
+		
+		Map<Integer, Vector<String>> classifiedStrings = classifyStrings(vector);
+		printClassifiedVector(classifiedStrings);
+	}*/
 }
