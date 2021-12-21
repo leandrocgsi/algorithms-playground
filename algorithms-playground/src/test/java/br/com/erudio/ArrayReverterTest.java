@@ -1,5 +1,6 @@
 package br.com.erudio;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Assertions;
@@ -65,5 +66,37 @@ class ArrayReverterTest {
 		Assertions.assertArrayEquals(
 				"Hello dlroW".split(""),
 				Arrays.asList(reversed).toArray(new String[0]));	
+	}
+	
+	@Test
+	void testReverseArrayOfStringsByPosition2() {
+		
+		String strArray[] = "Hello olleH".split("");
+		
+		var reversed = reverter.reverseArray(strArray, 6, 10);
+		
+		Assertions.assertArrayEquals(
+				"Hello Hello".split(""),
+				Arrays.asList(reversed).toArray(new String[0]));	
+	}
+	
+	@Test
+	void testReverseArrayOfStringsByPosition3() {
+		
+		
+		Integer arrayA[] = { 1, 2, 3, 4, 5, 6 };
+		
+		Integer arrayB[] = { 7, 8, 9, 10 };
+		Integer expected[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		int aLength = arrayA.length;
+		int bLength = arrayB.length;
+
+	    Integer[] fusion = (Integer[]) Array.newInstance(Integer.class, aLength + bLength);
+	    System.arraycopy(arrayA, 0, fusion, 0, aLength);
+	    System.arraycopy(arrayB, 0, fusion, aLength, bLength);
+		
+		Assertions.assertArrayEquals(
+				expected,
+				Arrays.asList(fusion).toArray(new Integer[0]));	
 	}
 }
