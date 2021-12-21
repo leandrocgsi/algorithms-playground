@@ -7,52 +7,42 @@ import java.util.Vector;
 
 public class CustomHash {
 
-	// Function to find the hash
-	// value of the string s
-	static int getStringHashValue(String s) {
+	static int getStringHashValue(String word) {
 
-		// Stores hash value of string
+		int alphabetSize = 26;
 		int hashValue = 0;
-		int n = s.length();
-		char C[] = s.toCharArray();
+		char charsArray[] = word.toCharArray();
 
-		// Iterate over characters of the string
-		for (int i = 0; i < n; i++) {
-
-			// Calculate hash value
-			hashValue = (hashValue + (C[i])) % 26;
+		for (int i = 0; i < word.length(); i++) {
+			hashValue = (hashValue + (charsArray[i])) % alphabetSize;
 		}
-
-		// Return the hash value
 		return hashValue;
 	}
 
-	// Function to classify the strings
-	// according to the given condition
-	static void categorisationOfstrings(Vector<String> s, int N) {
+	static void categorisationOfstrings(Vector<String> arr) {
 
 		// Maps strings with their strings
 		// respective hash values
 		Map<Integer, Vector<String>> mp = new HashMap<>();
 
-		// Traverse the array of strings
-		for (int i = 0; i < N; i++) {
+		// Scroll through the array of strings
+		for (int i = 0; i < arr.size(); i++) {
 
 			// Find the hash value of the
 			// of the current string
-			int temp = getStringHashValue(s.get(i));
+			int temp = getStringHashValue(arr.get(i));
 
 			// Push the current string in
 			// value vector of temp key
 			if (mp.containsKey(temp)) {
-				mp.get(temp).add(s.get(i));
+				mp.get(temp).add(arr.get(i));
 			} else {
 				mp.put(temp, new Vector<String>());
-				mp.get(temp).add(s.get(i));
+				mp.get(temp).add(arr.get(i));
 			}
 		}
 
-		// Traverse over the map mp
+		// Scroll through the map mp
 		for (Map.Entry<Integer, Vector<String>> entry : mp.entrySet()) {
 
 			// Print the result
@@ -69,6 +59,6 @@ public class CustomHash {
 		Vector<String> arr = new Vector<String>(Arrays.asList(Sarr));
 		int N = arr.size();
 
-		categorisationOfstrings(arr, N);
+		categorisationOfstrings(arr);
 	}
 }
