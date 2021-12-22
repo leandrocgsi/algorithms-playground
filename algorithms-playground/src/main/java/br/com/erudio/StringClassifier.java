@@ -1,7 +1,9 @@
 package br.com.erudio;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Vector;
 
 public class StringClassifier {
@@ -34,6 +36,18 @@ public class StringClassifier {
 			}
 		}
 		return mp;
+	}
+	
+	public ArrayList<String> classifyStringsAsArrayList(Vector<String> arr) {
+		
+		ArrayList<String> stringsAsArrayList = new ArrayList<String>();
+		Map<Integer, Vector<String>> mp = classifyStrings(arr);
+		for (Map.Entry<Integer, Vector<String>> entry : mp.entrySet()) {
+			for (String str : entry.getValue()) {
+				stringsAsArrayList.add(str);
+			}
+		}
+		return stringsAsArrayList;
 	}
 
 	public static Map<Integer, Vector<String>> printClassifiedVector(Map<Integer, Vector<String>> mp) {

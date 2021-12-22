@@ -1,5 +1,6 @@
 package br.com.erudio;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Vector;
@@ -48,6 +49,15 @@ public class StringClassifierTest {
 		
 		Map<Integer, Vector<String>> classifiedStrings = stringClassifier.classifyStrings(vector);
 		Assertions.assertEquals("{9=[aahe, bgdb], 12=[bce], 13=[adf]}", classifiedStrings.toString());
+	}
+	
+	@Test
+	void testCategorisationOfstringsInArrayList() {
+		String[] array = {"adf", "aahe", "bce", "bgdb"};
+		Vector<String> vector = new Vector<String>(Arrays.asList(array));
+		
+		ArrayList<String> classifiedStrings = stringClassifier.classifyStringsAsArrayList(vector);
+		Assertions.assertEquals("[aahe, bgdb, bce, adf]", classifiedStrings.toString());
 	}
 
 }
